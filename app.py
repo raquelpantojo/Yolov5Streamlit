@@ -3,7 +3,10 @@ import torch
 import cv2
 import numpy as np
 
-# Carregue o modelo YOLOv5 "finger.pt"
+import requests
+from io import BytesIO
+
+
 # URL para o modelo YOLOv5 'finger.pt' no GitHub
 model_url = "https://github.com/raquelpantojo/Yolov5Streamlit/blob/main/models/finger.pt"
 
