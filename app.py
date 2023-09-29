@@ -28,8 +28,8 @@ if video_file is not None:
     video_capture = cv2.VideoCapture(temp_filename)
 
     # Inicialize variáveis
-    detection_found = False  # Detectou alguma vez?
-    target_frame = 150  # Número do frame desejado
+    detections_found = 0  # Quantas detecções encontradas
+    target_detections = 3  # Quantidade de detecções desejadas
 
     # Abra o vídeo de saída para salvar as detecções
     frame_width = int(video_capture.get(3))
@@ -37,8 +37,7 @@ if video_file is not None:
     out = cv2.VideoWriter('output.mp4', cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width, frame_height))
 
     # Loop para processar cada frame do vídeo
-    current_frame = 0  # Número do frame atual
-    while True:
+    while detections_found < target_detections:
         ret, frame = video_capture.read()
         if not ret:
             break
@@ -48,26 +47,15 @@ if video_file is not None:
         detected_frame = results.render()[0]
 
         # Se uma detecção foi encontrada, exiba o frame
-        if not detection_found:
-            st.image(detected_frame, caption="Resultado da Detecção", use_column_width=True)
-            detection_found = True
+        if len(results.xyxy[0]) > 0:
+            st.image(detected_frame, caption=f"Detecção {detections_found + 1}", use_column_width=True)
+            detections_found += 1
 
         # Escreva o frame no vídeo de saída
         out.write(detected_frame)
 
-        # Se já encontramos uma detecção, interrompa o loop
-        if detection_found:
-            current_frame += 1
-            if current_frame >= target_frame:
-                break
-
     # Fecha o vídeo de saída
     out.release()
-
-    st.write("Vídeo de Saída com a Detecção:")
-
-    # Exiba o vídeo final
-    st.video('output.mp4')
 
     # Certifique-se de apagar o arquivo temporário após o uso
     os.remove(temp_filename)
