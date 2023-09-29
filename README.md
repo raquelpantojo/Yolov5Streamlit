@@ -8,8 +8,7 @@ A Easy way to deploy [YOLOv5](https://github.com/ultralytics/yolov5) object dete
 **Please feel free to use/edit.** 
 
 
-code modified by GitHub/thepbordin from GitHub/zhoroh
-
+code modified by GitHub/raquelpantojo from GitHub/thepbordin 
 ## ✨ Features
 
 - YOLO Weights Source
