@@ -10,7 +10,7 @@ from video_predict import runVideo
 
 
 # Configurations
-CFG_MODEL_PATH = "models/yourModel.pt"
+CFG_MODEL_PATH = "models/finger.pt"
 CFG_ENABLE_URL_DOWNLOAD = True
 CFG_ENABLE_VIDEO_PREDICTION = True
 if CFG_ENABLE_URL_DOWNLOAD:
@@ -152,7 +152,7 @@ def main():
                                         'cpu', 'cuda'], disabled=True, index=0)
     # -- End of Sidebar
 
-    st.header('📦 YOLOv5 Streamlit Deployment Example')
+    st.header(' YOLOv5 Streamlit Deployment Test')
     st.sidebar.markdown(
         "https://github.com/thepbordin/Obstacle-Detection-for-Blind-people-Deployment")
 
