@@ -7,8 +7,13 @@ import numpy as np
 # URL para o modelo YOLOv5 'finger.pt' no GitHub
 model_url = "https://github.com/raquelpantojo/Yolov5Streamlit/blob/main/models/finger.pt"
 
-# Carregue o modelo YOLOv5 'finger.pt' diretamente do GitHub
-model = torch.hub.load('ultralytics/yolov5', model_url)
+# Baixe o modelo YOLOv5 'finger.pt' do GitHub
+response = requests.get(model_url)
+model_weights = BytesIO(response.content)
+
+# Carregue o modelo YOLOv5 'finger.pt' diretamente do URL
+model = torch.hub.load('ultralytics/yolov5', 'finger.pt', source=model_weights)
+
 
 
 st.title("Detecção da Ponta do Dedo em Vídeos")
