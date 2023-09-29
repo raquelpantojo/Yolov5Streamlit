@@ -9,15 +9,8 @@ import tempfile
 import requests
 from io import BytesIO
 
-# URL para o modelo YOLOv5 'finger.pt' no GitHub
-model_url = "https://github.com/raquelpantojo/Yolov5Streamlit/raw/main/models/finger.pt"
-
-# Carregue o modelo YOLOv5 'finger.pt' diretamente da URL
-response = requests.get(model_url)
-model_state_dict = torch.load(BytesIO(response.content))
-
-# Crie uma instância do modelo YOLOv5 com o estado carregado
-model = torch.hub.load('ultralytics/yolov5', 'custom', source='local', path_or_model=model_state_dict)
+# Carregue o modelo YOLOv5 'finger.pt' localmente
+model = torch.hub.load('ultralytics/yolov5', 'custom', path='finger.pt', force_reload=True)
 
 
 st.title("Detecção da Ponta do Dedo em Vídeos")
