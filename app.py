@@ -34,7 +34,7 @@ if video_file is not None:
     # Abra o vídeo de saída para salvar as detecções
     frame_width = int(video_capture.get(3))
     frame_height = int(video_capture.get(4))
-    out = cv2.VideoWriter('output.mp4', cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width, frame_height))
+    out = cv2.VideoWriter('output.mp4', cv2.VideoWriter_fourcc('M','J','P','G'), 30, (frame_width, frame_height))
 
     # Loop para processar cada frame do vídeo
     while detections_found < target_detections:
@@ -48,7 +48,7 @@ if video_file is not None:
 
         # Se uma detecção foi encontrada, exiba o frame
         if len(results.xyxy[0]) > 0:
-            st.image(detected_frame, caption=f"Detecção {detections_found + 1}", use_column_width=True)
+            st.image(detected_frame, channels="RGB",caption=f"Detecção {detections_found + 1}", use_column_width=True)
             detections_found += 1
 
         # Escreva o frame no vídeo de saída
