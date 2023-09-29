@@ -52,7 +52,7 @@ if video_file is not None:
             x, y, w, h = detection[0:4]  # Valores x, y, largura (w) e altura (h)
            
             
-            st.image(detected_frame, caption=f"Detecção {detections_found + 1}", use_column_width=True,channels ="RGB")
+            st.image(detected_frame, caption=f"Detecção {detections_found + 1}", use_column_width=True,channels ="BGR")
             st.write(f"x: {x}, y: {y}, largura (w): {w}, altura (h): {h}")
             detections_found += 1
             
