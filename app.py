@@ -2,9 +2,20 @@ import streamlit as st
 import torch
 import cv2
 import numpy as np
+import requests
+import tempfile
 
-# Carregue o modelo YOLOv5 "finger.pt"
-model = torch.hub.load('ultralytics/yolov5', 'finger.pt')
+ URL para o modelo YOLOv5 'finger.pt' no GitHub
+model_url = "https://github.com/raquelpantojo/Yolov5Streamlit/raw/main/models/finger.pt"
+
+# Baixe o modelo YOLOv5 'finger.pt' do GitHub para um arquivo temporário
+model_weights = tempfile.NamedTemporaryFile(delete=False)
+with open(model_weights.name, 'wb') as f:
+    response = requests.get(model_url)
+    f.write(response.content)
+
+# Carregue o modelo YOLOv5 'finger.pt' do arquivo temporário
+model = torch.hub.load('ultralytics/yolov5', 'custom', path=model_weights.name)
 
 st.title("Detecção da Ponta do Dedo em Vídeos")
 
