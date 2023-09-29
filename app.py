@@ -15,7 +15,9 @@ CFG_ENABLE_URL_DOWNLOAD = True
 CFG_ENABLE_VIDEO_PREDICTION = True
 if CFG_ENABLE_URL_DOWNLOAD:
     # Configure this if you set cfg_enable_url_download to True
-    url = "https://archive.org/download/yoloTrained/yoloTrained.pt"
+    #url = "https://archive.org/download/yoloTrained/yoloTrained.pt"
+    url = "https://github.com/raquelpantojo/Yolov5Streamlit/raw/main/models/finger.pt"
+
 # End of Configurations
 
 
