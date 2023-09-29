@@ -48,7 +48,7 @@ if video_file is not None:
 
         # Se uma detecção foi encontrada, exiba o frame
         if len(results.xyxy[0]) > 0:
-            detection = results.xyxy[0][0]  # Pegue a segunda detecção
+            detection = results.xyxy[0][0]  # Pegue a primeira detecção
             x, y, w, h = detection[0:4]  # Valores x, y, largura (w) e altura (h)
             x1, y1, x2, y2 = map(int, detection[0:4])  
             roi = frame[y1:y2, x1:x2]
