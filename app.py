@@ -19,8 +19,14 @@ def detect_finger(image):
 video_file = st.file_uploader("Carregar um vídeo", type=['mp4', 'mpeg', 'mov'])
 
 if video_file is not None:
-    # Abra o vídeo
-    video_capture = cv2.VideoCapture(video_file)
+    # Salve o vídeo em um arquivo temporário
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.mp4') as temp_file:
+        temp_filename = temp_file.name
+        temp_file.write(video_file.read())
+
+    # Abra o vídeo com o caminho do arquivo temporário
+    video_capture = cv2.VideoCapture(temp_filename)
+    
 
     # Crie um temporizador para lidar com o limite de execução
     t = 0
