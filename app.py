@@ -48,11 +48,18 @@ if video_file is not None:
 
         # Se uma detecção foi encontrada, exiba o frame
         if len(results.xyxy[0]) > 0:
-            detection = results.xyxy[0][0]  # Pegue a primeira detecção
+            detection = results.xyxy[0][1]  # Pegue a segunda detecção
             x, y, w, h = detection[0:4]  # Valores x, y, largura (w) e altura (h)
+           
+            
             st.image(detected_frame, caption=f"Detecção {detections_found + 1}", use_column_width=True)
             st.write(f"x: {x}, y: {y}, largura (w): {w}, altura (h): {h}")
             detections_found += 1
+            
+             # para transformar no OpenCV
+            x1, y1, x2, y2 = map(int, detection[0:4])  # Converte para números inteiros
+            roi = frame[y1:y2, x1:x2]
+            st.image(roi)
 
         # Escreva o frame no vídeo de saída
         out.write(detected_frame)
