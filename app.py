@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 
 # Carregue o modelo YOLOv5 "finger.pt"
-model = torch.hub.load('ultralytics/yolov5', 'finger.pt')
+model = torch.hub.load('ultralytics/yolov5', 'models/finger.pt')
 
 st.title("Detecção da Ponta do Dedo em Vídeos")
 
