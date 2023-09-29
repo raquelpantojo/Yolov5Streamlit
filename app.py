@@ -5,7 +5,7 @@ import numpy as np
 
 # Carregue o modelo YOLOv5 "finger.pt"
 # URL para o modelo YOLOv5 'finger.pt' no GitHub
-model_url = "https://github.com/raquelpantojo/Yolov5Streamlit/raw/main/models/finger.pt"
+model_url = "https://github.com/raquelpantojo/Yolov5Streamlit/blob/main/models/finger.pt"
 
 # Carregue o modelo YOLOv5 'finger.pt' diretamente do GitHub
 model = torch.hub.load('ultralytics/yolov5', model_url)
