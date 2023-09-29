@@ -48,7 +48,10 @@ if video_file is not None:
 
         # Se uma detecção foi encontrada, exiba o frame
         if len(results.xyxy[0]) > 0:
-            st.image(detected_frame,caption=f"Detecção {detections_found + 1}", use_column_width=True)
+            detection = results.xyxy[0][0]  # Pegue a primeira detecção
+            x, y, w, h = detection[0:4]  # Valores x, y, largura (w) e altura (h)
+            st.image(detected_frame, caption=f"Detecção {detections_found + 1}", use_column_width=True)
+            st.write(f"x: {x}, y: {y}, largura (w): {w}, altura (h): {h}")
             detections_found += 1
 
         # Escreva o frame no vídeo de saída
@@ -56,6 +59,11 @@ if video_file is not None:
 
     # Fecha o vídeo de saída
     out.release()
+
+    st.write("Vídeo de Saída com as Detecções:")
+
+    # Exiba o vídeo final
+    st.video('output.mp4')
 
     # Certifique-se de apagar o arquivo temporário após o uso
     os.remove(temp_filename)
