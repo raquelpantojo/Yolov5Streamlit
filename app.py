@@ -5,7 +5,7 @@ import numpy as np
 import requests
 import tempfile
 
- URL para o modelo YOLOv5 'finger.pt' no GitHub
+ 
 model_url = "https://github.com/raquelpantojo/Yolov5Streamlit/raw/main/models/finger.pt"
 
 # Baixe o modelo YOLOv5 'finger.pt' do GitHub para um arquivo temporário
