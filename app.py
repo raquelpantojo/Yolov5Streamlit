@@ -40,13 +40,16 @@ def imageInput(model, src):
                 f.write(image_file.getbuffer())
 
             with st.spinner(text="Predicting..."):
+                # Ajuste o limiar de confiança, por exemplo, para 0.5
+                results = model(imgpath, conf_thres=0.5)
+                results.render()
                 # Load model
-                pred = model(imgpath)
-                pred.render()
+                #pred = model(imgpath)
+                #pred.render()
                 # save output to file
-                for im in pred.ims:
-                    im_base64 = Image.fromarray(im)
-                    im_base64.save(outputpath)
+                #for im in pred.ims:
+                #    im_base64 = Image.fromarray(im)
+                #    im_base64.save(outputpath)
 
             # Predictions
             img_ = Image.open(outputpath)
