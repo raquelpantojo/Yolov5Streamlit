@@ -58,6 +58,7 @@ if video_file is not None:
             
              # para transformar no OpenCV
             x1, y1, x2, y2 = map(int, detection[0:4])  # Converte para números inteiros
+            st.write(f"x: {x1}, y: {y1}, largura (w): {x2}, altura (h): {y2}")
             roi = frame[y1:y2, x1:x2]
             st.image(roi)
 
