@@ -49,23 +49,24 @@ if video_file is not None:
         # Se uma detecção foi encontrada, exiba o frame
         if len(results.xyxy[0]) > 0:
             detection = results.xyxy[0][0]  # Pegue a primeira detecção
-            x, y, w, h = detection[0:4]  # Valores x, y, largura (w) e altura (h)
+            xmin, ymin, xmax, ymax = detection[0:4]  # Valores x, y, largura (w) e altura (h)
+            
             x1, y1, x2, y2 = map(int, detection[0:4])  
             roi = frame[y1:y2, x1:x2]
-            st.image(roi,channels ="BGR")
             
+            st.image(roi,channels ="BGR")
             st.image(detected_frame, caption=f"Detecção {detections_found + 1}", use_column_width=True,channels ="BGR")
             
             #st.write(f"x: {x}, y: {y}, largura (w): {w}, altura (h): {h}")
             
             # Converte para números inteiros
-            x1 = int(x - w / 2)
-            y1 = int(y - h / 2)
-            x2 = int(x + w / 2)
-            y2 = int(y + h / 2)
+            #x1 = int(x - w / 2)
+            #y1 = int(y - h / 2)
+            #x2 = int(x + w / 2)
+            #y2 = int(y + h / 2)
             
-            st.write(f"YOLO x: {x1}, y: {y1}, largura (w): {x2}, altura (h): {y2}")
-            st.write(f"OpenCV x: {x1}, y: {y1}, largura (w): {x1+x2}, altura (h): {y1+y2}")
+            st.write(f"YOLO xmin: {xmin}, ymin: {ymin}, xmax: {xmax}, ymax: {ymax}")
+            st.write(f"OpenCV x: {x1}, y: {y1}, x2: {x2}, y2: {y2}")
             
     
             detections_found += 1
