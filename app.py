@@ -29,7 +29,7 @@ if video_file is not None:
 
     # Inicialize variáveis
     detections_found = 0  # Quantas detecções encontradas
-    target_detections = 3  # Quantidade de detecções desejadas
+    target_detections = 10  # Quantidade de detecções desejadas
 
     # Abra o vídeo de saída para salvar as detecções
     frame_width = int(video_capture.get(3))
@@ -53,10 +53,7 @@ if video_file is not None:
             x1, y1, x2, y2 = map(int, detection[0:4])  
             st.write(f"x: {x1}, y: {y1}, largura (w): {x2}, altura (h): {y2}")
             
-            st.image(detected_frame, caption=f"Detecção {detections_found + 1}", use_column_width=True,channels ="BGR")
-            #st.write(f"x: {x}, y: {y}, largura (w): {w}, altura (h): {h}")
-            detections_found += 1
-            
+           
             # Converte para números inteiros
             x1 = int(x - w / 2)
             y1 = int(y - h / 2)
@@ -65,8 +62,13 @@ if video_file is not None:
 
             st.write(f"OpenCV x: {x1}, y: {y1}, largura (w): {x2}, altura (h): {y2}")
             
+            st.image(detected_frame, caption=f"Detecção {detections_found + 1}", use_column_width=True,channels ="BGR")
+            #st.write(f"x: {x}, y: {y}, largura (w): {w}, altura (h): {h}")
+            
+            detections_found += 1
             roi = frame[y1:y2, x1:x2]
             st.image(roi,channels ="BGR")
+            
 
         # Escreva o frame no vídeo de saída
         out.write(detected_frame)
