@@ -3,6 +3,7 @@ import torch
 import cv2
 import numpy as np
 import tempfile
+import os
 
 # Carregue o modelo YOLOv5 'finger.pt' localmente
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='finger.pt', force_reload=True)
