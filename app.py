@@ -54,6 +54,7 @@ if video_file is not None:
             
             
             st.image(detected_frame, caption=f"Detecção {detections_found + 1}", use_column_width=True,channels ="BGR")
+            detections_found += 1
             #st.write(f"x: {x}, y: {y}, largura (w): {w}, altura (h): {h}")
             
             # Converte para números inteiros
@@ -68,7 +69,7 @@ if video_file is not None:
             
             roi = frame[y1:y2, x1:x2]
             st.image(roi,channels ="BGR")
-            detections_found += 1
+            
 
         # Escreva o frame no vídeo de saída
         out.write(detected_frame)
