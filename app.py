@@ -29,7 +29,7 @@ if video_file is not None:
 
     # Inicialize variáveis
     detections_found = 0  # Quantas detecções encontradas
-    target_detections = 10  # Quantidade de detecções desejadas
+    target_detections = 3  # Quantidade de detecções desejadas
 
     # Abra o vídeo de saída para salvar as detecções
     frame_width = int(video_capture.get(3))
