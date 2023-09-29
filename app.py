@@ -48,7 +48,7 @@ if video_file is not None:
 
         # Se uma detecção foi encontrada, exiba o frame
         if len(results.xyxy[0]) > 0:
-            st.image(detected_frame, channels="RGB",caption=f"Detecção {detections_found + 1}", use_column_width=True)
+            st.image(detected_frame,caption=f"Detecção {detections_found + 1}", use_column_width=True)
             detections_found += 1
 
         # Escreva o frame no vídeo de saída
