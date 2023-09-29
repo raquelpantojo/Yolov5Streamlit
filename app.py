@@ -4,7 +4,8 @@ import cv2
 import numpy as np
 
 # Carregue o modelo YOLOv5 "finger.pt"
-model = torch.hub.load('ultralytics/yolov5', 'models/finger.pt')
+model_path="https://github.com/raquelpantojo/Yolov5Streamlit/tree/main/models/finger.pt"
+model = torch.hub.load(model_path)
 
 st.title("Detecção da Ponta do Dedo em Vídeos")
 
