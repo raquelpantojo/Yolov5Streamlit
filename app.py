@@ -12,6 +12,7 @@ st.title("Detecção da Ponta do Dedo em Vídeos")
 
 # Função para realizar a detecção em um frame
 def detect_finger(image):
+    model.conf = 0.80  # Defina o threshold de confiança desejado
     results = model(image)
     return results
 
