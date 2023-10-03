@@ -4,21 +4,25 @@ import cv2
 import numpy as np
 import tempfile
 import os
+from yolov5.models.experimental import attempt_load
+from yolov5.utils.torch_utils import select_device
+from yolov5.utils.general import non_max_suppression
 
-# Carregue o modelo YOLOv5 'finger.pt' localmente
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='amarelo.pt', force_reload=True)
+# Carregue o modelo YOLOv5 'amarelo.pt' localmente
+device = select_device("")  # Selecionar o dispositivo (CPU ou GPU)
+model = attempt_load("amarelo.pt", map_location=device)
+model.eval()
 
 st.title("Detecção da Ponta do Dedo em Vídeos")
 
 # Função para realizar a detecção em um frame
 def detect_finger(frame, confidence_threshold=0.7):
-    results = model(frame)
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  # Converta o quadro para o formato RGB
+    results = model(frame)  # Realize a detecção
 
     # Filtrar detecções com base no threshold de confiança
-    detections = results.pred[0]
-    mask = detections[:, 4] > confidence_threshold
-    detections = detections[mask]
-
+    detections = non_max_suppression(results, confidence_threshold, 0.4)
+    
     return detections
 
 # Upload de um vídeo
