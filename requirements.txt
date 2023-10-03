@@ -4,12 +4,12 @@
 # Base ----------------------------------------
 matplotlib>=3.2.2
 numpy>=1.21.2
-opencv-python==4.5.3
+opencv-python
 Pillow>=7.1.2
 PyYAML>=5.3.1
 requests>=2.23.0
 scipy>=1.4.1  # Versão específica necessária para o Google Colab
-torch==1.8.0
+torch
 torchvision>=0.8.1
 tqdm>=4.41.0
 protobuf<4.21.5  # https://github.com/ultralytics/yolov5/issues/8012
@@ -31,4 +31,4 @@ ffmpeg-python
 
 # Streamlit and YOLOv5
 streamlit==1.27.1
-yolov5==5.0.5
+yolov5
