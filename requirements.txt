@@ -30,5 +30,5 @@ thop  # Cálculo de FLOPs
 ffmpeg-python
 
 # Streamlit and YOLOv5
-streamlit==0.89.0
+streamlit==1.27.1
 yolov5==5.0.5
