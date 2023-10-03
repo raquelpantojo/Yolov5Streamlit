@@ -6,7 +6,7 @@ import tempfile
 import os
 
 # Carregue o modelo YOLOv5 'finger.pt' localmente
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='finger.pt', force_reload=True)
+model = torch.hub.load('ultralytics/yolov5', 'custom', path='amarelo.pt', force_reload=True)
 
 st.title("Detecção da Ponta do Dedo em Vídeos")
 
