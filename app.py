@@ -12,7 +12,7 @@ st.title("Detecção da Ponta do Dedo em Vídeos")
 
 # Função para realizar a detecção em um frame
 def detect_finger(image):
-    model.conf = 0.80  # Defina o threshold de confiança desejado
+    model.conf = 0.70  # Defina o threshold de confiança desejado
     results = model(image)
     return results
 
@@ -78,9 +78,6 @@ if video_file is not None:
     # Fecha o vídeo de saída
     out.release()
 
-    #st.write("Vídeo de Saída com as Detecções:")
-    # Exiba o vídeo final
-    #st.video('output.mp4')
 
     # Certifique-se de apagar o arquivo temporário após o uso
     os.remove(temp_filename)
