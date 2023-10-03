@@ -11,15 +11,15 @@ model = torch.hub.load('ultralytics/yolov5', 'custom', path='amarelo.pt', force_
 st.title("Detecção da Ponta do Dedo em Vídeos")
 
 # Função para realizar a detecção em um frame
-def detect_finger(image):
-    #model.conf = 0.70  # Defina o threshold de confiança desejado
-    confidence_threshold = 0.70
+def detect_finger(frame, confidence_threshold=0.7):
+    results = model(frame)
 
-    # Realize a detecção
-    results = model.detect(image, confidence_threshold)
-    #results = model(image)
+    # Filtrar detecções com base no threshold de confiança
+    detections = results.pred[0]
+    mask = detections[:, 4] > confidence_threshold
+    detections = detections[mask]
 
-    return results
+    return detections
 
 # Upload de um vídeo
 video_file = st.file_uploader("Carregar um vídeo", type=['mp4', 'mpeg', 'mov'])
